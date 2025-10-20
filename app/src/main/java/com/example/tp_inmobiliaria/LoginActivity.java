@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
-        binding.btnLogin.setOnClickListener(v -> vm.login());
+        binding.btnLogin.setOnClickListener(v -> vm.validarCampos());
 
         vm.getMensajeError().observe(this, binding.tvError::setText);
 

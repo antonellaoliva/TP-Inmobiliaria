@@ -3,15 +3,20 @@ package com.example.tp_inmobiliaria.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.tp_inmobiliaria.models.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public class ApiClient {
 
@@ -29,10 +34,10 @@ public class ApiClient {
         return retrofit.create(InmoService.class);
     }
 
-    public static void guardarToken(Context context, String string){
+    public static void guardarToken(Context context, String token){
         SharedPreferences sp = context.getSharedPreferences("token.xml", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("token", "token");
+        editor.putString("token", token);
         editor.apply();
     }
 
@@ -45,5 +50,10 @@ public class ApiClient {
         @FormUrlEncoded
         @POST("api/Propietarios/login")
         Call<String> login(@Field("Usuario") String u, @Field("Clave") String c);
+
+        @GET("api/Propietarios")
+        Call<Propietario> obtenerPropietario(@Header("Authorization") String token);
+        @PUT("api/Propietarios/actualizar")
+        Call<Propietario> actualizarPropietario(@Header("Authorization") String token, @Body Propietario propietario);
     }
 }

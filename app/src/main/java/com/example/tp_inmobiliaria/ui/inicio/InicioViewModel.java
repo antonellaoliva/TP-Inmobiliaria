@@ -1,19 +1,30 @@
 package com.example.tp_inmobiliaria.ui.inicio;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class InicioViewModel extends ViewModel {
+import com.google.android.gms.maps.model.LatLng;
 
-    private final MutableLiveData<String> mText;
+public class InicioViewModel extends AndroidViewModel {
 
-    public InicioViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+    private final MutableLiveData<LatLng> ubicacionLiveData = new MutableLiveData<>();
+
+    public InicioViewModel(@NonNull Application application) {
+        super(application);
+        cargarUbicacion();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    private void cargarUbicacion(){
+        LatLng ubicacion = new LatLng(-33.675064, -65.462957);
+        ubicacionLiveData.setValue(ubicacion);
+    }
+
+    public LiveData<LatLng> getUbicacion(){
+        return ubicacionLiveData;
     }
 }

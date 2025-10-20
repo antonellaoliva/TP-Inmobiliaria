@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TPInmobiliaria">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAsRoBpnm0vlFuEiBpuiQ-OkD0Ndk-qpz0" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"
