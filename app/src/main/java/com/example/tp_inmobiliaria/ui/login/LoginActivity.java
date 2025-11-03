@@ -1,4 +1,4 @@
-package com.example.tp_inmobiliaria;
+package com.example.tp_inmobiliaria.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.tp_inmobiliaria;
+package com.example.tp_inmobiliaria.ui.login;
 
 import android.app.Application;
 
@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.tp_inmobiliaria.MainActivity;
 import com.example.tp_inmobiliaria.request.ApiClient;
 
 import retrofit2.Call;
@@ -94,7 +95,7 @@ public class LoginViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    ApiClient.guardarToken(getApplication(), "Bearer " + response.body());
+                    ApiClient.guardarToken(getApplication(), response.body());
                     mensajeError.postValue("");
                     mostrarError.postValue(false);
                     proximaPantalla.postValue(MainActivity.class);

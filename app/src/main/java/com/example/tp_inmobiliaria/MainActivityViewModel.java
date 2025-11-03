@@ -12,7 +12,7 @@ import com.example.tp_inmobiliaria.ui.inquilinos.InquilinosFragment;
 import com.example.tp_inmobiliaria.ui.logout.LogoutFragment;
 import com.example.tp_inmobiliaria.ui.perfil.PerfilFragment;
 
-public class MainViewModel extends ViewModel {
+public class MainActivityViewModel extends ViewModel {
 
     private final MutableLiveData<Fragment> fragment = new MutableLiveData<>();
 

@@ -13,5 +13,6 @@
     <string name="nav_contratos">Contratos</string>
     <string name="nav_inquilinos">Inquilinos</string>
     <string name="menu_slideshow">Logout</string>
+    <string name="menu_principal">menu_principal</string>
 
 </resources>

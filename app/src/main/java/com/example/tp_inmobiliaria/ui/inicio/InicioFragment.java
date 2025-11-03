@@ -40,12 +40,8 @@ public class InicioFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        viewModel.getUbicacion().observe(getViewLifecycleOwner(), ubicacion -> {
-            mMap.addMarker(new MarkerOptions().position(ubicacion).title("Inmobiliaria"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15));
-        });
+       mMap = googleMap;
+       viewModel.configurarMapa(mMap);
     }
 
 

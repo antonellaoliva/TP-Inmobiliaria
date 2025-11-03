@@ -22,7 +22,7 @@
             android:value="mi_clave" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.TPInmobiliaria.NoActionBar">
             <intent-filter>
