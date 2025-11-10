@@ -92,7 +92,7 @@ public class CargarInmuebleViewModel extends AndroidViewModel {
 
             ApiClient.InmoService inmoService = ApiClient.getApiInmobiliaria();
             String token = ApiClient.leerToken(getApplication());
-            Call<Inmueble> call = inmoService.CargarInmueble("Bearer "+ token, imagenPart, inmuebleBody);
+            Call<Inmueble> call = inmoService.cargarInmueble("Bearer "+ token, imagenPart, inmuebleBody);
             call.enqueue(new Callback<Inmueble>() {
                 @Override
                 public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {

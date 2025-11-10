@@ -17,13 +17,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class InicioFragment extends Fragment implements OnMapReadyCallback {
+public class InicioFragment extends Fragment {
 
     private FragmentInicioBinding binding;
-    private GoogleMap mMap;
     private InicioViewModel viewModel;
+    private GoogleMap mMap;
 
-
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -33,18 +33,17 @@ public class InicioFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
+            mapFragment.getMapAsync(googleMap -> {
+                mMap = googleMap;
+
+                viewModel.getUbicacion().observe(getViewLifecycleOwner(), ubicacion -> {
+                    viewModel.configurarMapa(mMap, ubicacion);
+                });
+            });
         }
-       return binding.getRoot();
-}
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-       mMap = googleMap;
-       viewModel.configurarMapa(mMap);
+        return binding.getRoot();
     }
-
-
 
     @Override
     public void onDestroyView() {
@@ -52,3 +51,5 @@ public class InicioFragment extends Fragment implements OnMapReadyCallback {
         binding = null;
     }
 }
+
+

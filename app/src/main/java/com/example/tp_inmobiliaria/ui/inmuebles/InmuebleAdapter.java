@@ -54,7 +54,6 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
             Bundle bundle = new Bundle();
             bundle.putSerializable("inmueble", i);
             Navigation.findNavController(v).navigate(R.id.detalleInmuebleFragment, bundle);
-//            Navigation.findNavController((Activity)v.getContext(), R.id.nav_host_fragment_content_main).navigate(R.id.detalleInmuebleFragment, bundle);
 
         });
 

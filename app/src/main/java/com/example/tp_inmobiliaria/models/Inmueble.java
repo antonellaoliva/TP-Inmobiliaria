@@ -16,11 +16,12 @@ public class Inmueble implements Serializable {
     private boolean disponible;
     private int idPropietario;
     private Propietario duenio;
+    private boolean tieneContratoVigente;
 
     public Inmueble() {
     }
 
-    public Inmueble(int idInmueble, String direccion, String uso, String tipo, int ambientes, int superficie, double latitud, double longitud, double valor, String imagen, boolean disponible, int idPropietario, Propietario duenio) {
+    public Inmueble(int idInmueble, String direccion, String uso, String tipo, int ambientes, int superficie, double latitud, double longitud, double valor, String imagen, boolean disponible, int idPropietario, Propietario duenio, boolean tieneContratoVigente) {
         this.idInmueble = idInmueble;
         this.direccion = direccion;
         this.uso = uso;
@@ -34,6 +35,7 @@ public class Inmueble implements Serializable {
         this.disponible = disponible;
         this.idPropietario = idPropietario;
         this.duenio = duenio;
+        this.tieneContratoVigente = tieneContratoVigente;
     }
 
     public int getIdInmueble() {
@@ -88,6 +90,8 @@ public class Inmueble implements Serializable {
         return duenio;
     }
 
+    public boolean isTieneContratoVigente() {return tieneContratoVigente;}
+
     public void setIdInmueble(int idInmueble) {
         this.idInmueble = idInmueble;
     }
@@ -138,5 +142,9 @@ public class Inmueble implements Serializable {
 
     public void setDuenio(Propietario duenio) {
         this.duenio = duenio;
+    }
+
+    public void setTieneContratoVigente(boolean tieneContratoVigente) {
+        this.tieneContratoVigente = tieneContratoVigente;
     }
 }

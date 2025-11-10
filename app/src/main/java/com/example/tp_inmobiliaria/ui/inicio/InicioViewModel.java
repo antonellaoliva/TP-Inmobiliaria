@@ -21,20 +21,20 @@ public class InicioViewModel extends AndroidViewModel {
         cargarUbicacion();
     }
 
-    private void cargarUbicacion(){
+    private void cargarUbicacion() {
         LatLng ubicacion = new LatLng(-33.675064, -65.462957);
         ubicacionLiveData.setValue(ubicacion);
     }
 
-    public LiveData<LatLng> getUbicacion(){
+    public LiveData<LatLng> getUbicacion() {
         return ubicacionLiveData;
     }
 
-    public void configurarMapa(GoogleMap map){
-        LatLng ubicacion = ubicacionLiveData.getValue();
-        if(ubicacion != null){
-            map.addMarker(new MarkerOptions().position(ubicacion).title("Inmobiliaria"));
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15));
-        }
+
+    public void configurarMapa(GoogleMap map, LatLng ubicacion) {
+        map.addMarker(new MarkerOptions().position(ubicacion).title("Inmobiliaria"));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15));
     }
 }
+
+

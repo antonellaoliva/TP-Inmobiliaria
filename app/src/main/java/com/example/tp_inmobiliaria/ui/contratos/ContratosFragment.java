@@ -7,32 +7,36 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tp_inmobiliaria.R;
+import com.example.tp_inmobiliaria.databinding.FragmentContratosBinding;
 
 public class ContratosFragment extends Fragment {
 
+    private FragmentContratosBinding binding;
     private ContratosViewModel mViewModel;
-
-    public static ContratosFragment newInstance() {
-        return new ContratosFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_contratos, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        binding = FragmentContratosBinding.inflate(inflater, container, false);
         mViewModel = new ViewModelProvider(this).get(ContratosViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
+        mViewModel.getLista().observe(getViewLifecycleOwner(), inmuebles -> {
+            ContratoAdapter adapter = new ContratoAdapter(inmuebles, getContext());
+            GridLayoutManager glm = new GridLayoutManager(getContext(), 2);
+            binding.rvContratos.setLayoutManager(glm);
+            binding.rvContratos.setAdapter(adapter);
+        });
+
+
+
+        mViewModel.setInmueblesAlquilados();
+        return binding.getRoot();
+    }
 }

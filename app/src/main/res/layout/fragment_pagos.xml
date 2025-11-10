@@ -10,7 +10,7 @@
         android:id="@+id/tvTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Inmuebles alquilados"
+        android:text="Pagos realizados"
         android:textSize="22sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvInquilinos"
+        android:id="@+id/rvPagos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="4dp"
